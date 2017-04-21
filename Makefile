@@ -8,6 +8,9 @@ install:
 playbook: 
 	@ansible-playbook -i inventories/vagrant/inventory configure.yml 
 
+test: 
+	@ansible-playbook -i inventories/vagrant/inventory configure.yml --syntax-check
+
 init:
 	@vagrant up
 
