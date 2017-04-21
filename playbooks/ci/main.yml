@@ -10,8 +10,14 @@
   hosts: ci-server
   vars:
     - jenkins_hostname: jenkins.example.com
+    - jenkins_http_port: 8080
     - jenkins_version: "2.53"
     - jenkins_plugins:
+      - ldap
+      - git
+      - job-dsl
+      - workflow-aggregator
+      - build-pipeline-plugin
       - ansicolor
     - firewall_allowed_tcp_ports:
       - "22"
