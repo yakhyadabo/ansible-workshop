@@ -28,4 +28,7 @@
     - geerlingguy.firewall
     - geerlingguy.jenkins
     #    - git
+  tasks:
+   - name: Set /etc/ansible owner to user jenkins
+     file: path=/etc/ansible owner=jenkins group=jenkins recurse=yes
 
