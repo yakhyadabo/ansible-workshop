@@ -1,0 +1,25 @@
+---
+- name: Installing and configuring Docker 
+  hosts: all
+  sudo: yes
+  roles:
+    - { role: geerlingguy.docker, tags: ["docker"] }
+
+
+- name: Configure CI server
+  hosts: ci-server
+  vars:
+    - jenkins_hostname: jenkins.example.com
+    - jenkins_version: "2.53"
+    - jenkins_plugins:
+      - ansicolor
+    - firewall_allowed_tcp_ports:
+      - "22"
+      - "8080"
+  sudo: yes
+  roles:
+    - geerlingguy.ansible
+    - geerlingguy.firewall
+    - geerlingguy.jenkins
+    #    - git
+

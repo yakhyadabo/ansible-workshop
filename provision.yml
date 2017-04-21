@@ -1,0 +1,5 @@
+---
+
+- include: provisioners/digitalocean.xml 
+  # - include: provisioners/aws.xml 
+- include: configure.yml

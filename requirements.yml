@@ -1,0 +1,8 @@
+---
+
+# From Ansible Galaxy
+- src: geerlingguy.docker
+- src: geerlingguy.java
+- src: geerlingguy.jenkins
+- src: geerlingguy.firewall
+- src: geerlingguy.ansible
