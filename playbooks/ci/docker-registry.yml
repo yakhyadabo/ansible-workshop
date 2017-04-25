@@ -1,0 +1,7 @@
+---
+- name: Run Docker Registry
+  docker: 
+    name: registry
+    image: registry:2.6.1
+    state: running
+    ports: "5000:5000"
