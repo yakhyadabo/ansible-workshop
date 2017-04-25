@@ -31,3 +31,14 @@
   tasks:
    - name: Set /etc/ansible owner to user jenkins
      file: path=/etc/ansible owner=jenkins group=jenkins recurse=yes
+
+   - name: Install Docker Python library
+     pip: name=docker-py state=present
+     #   become: yes
+
+   - name: Run Docker Registry
+     docker: 
+       name: registry
+       image: registry:2.6.1
+       state: running
+       ports: "5000:5000"
