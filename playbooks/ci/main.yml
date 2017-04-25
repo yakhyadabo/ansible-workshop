@@ -1,13 +1,14 @@
 ---
 - name: Installing and configuring Docker 
   hosts: all
-  sudo: yes
+  become: yes
   roles:
     - { role: geerlingguy.docker, tags: ["docker"] }
 
 
 - name: Configure CI server
   hosts: ci-server
+  become: yes
   vars:
     - jenkins_hostname: localhost
     - jenkins_http_port: 8083
@@ -22,7 +23,6 @@
     - firewall_allowed_tcp_ports:
       - "22"
       - "8083"
-  sudo: yes
   roles:
     - geerlingguy.ansible
     - geerlingguy.firewall
@@ -31,4 +31,3 @@
   tasks:
    - name: Set /etc/ansible owner to user jenkins
      file: path=/etc/ansible owner=jenkins group=jenkins recurse=yes
-
