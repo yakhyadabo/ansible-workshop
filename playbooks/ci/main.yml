@@ -4,6 +4,8 @@
   become: yes
   roles:
     - { role: geerlingguy.docker, tags: ["docker"] }
+  tasks:
+    - include: ../../include/docker-config.yml
 
 
 - name: Configure CI server

@@ -1,0 +1,6 @@
+---
+- name: Configuring Docker daemon
+  copy:
+    content: "DOCKER_OPTS=\"--insecure-registry http://ci.app.dev:5000\""
+    dest: "/etc/default/docker" 
+
