@@ -4,17 +4,27 @@
   become: yes
   roles:
     - { role: geerlingguy.docker, tags: ["docker"] }
+
   tasks:
     - include: ../../include/docker-config.yml
+
+
 
 
 - name: Configure CI server
   hosts: ci-server
   become: yes
+  pre_tasks: 
+    - name: installing repo for Java 8 in Ubuntu
+      apt_repository: repo='ppa:openjdk-r/ppa'
+
   vars:
+    - java_packages:
+      - openjdk-8-jdk
     - jenkins_hostname: localhost
     - jenkins_http_port: 8083
-    - jenkins_version: "2.53"
+    - jenkins_version: "2.58"
+    - jenkins_package_state: lastest
     - jenkins_plugins:
       - ldap
       - git
@@ -29,7 +39,7 @@
     - geerlingguy.ansible
     - geerlingguy.firewall
     - geerlingguy.jenkins
-    #    - git
+
   tasks:
     - include: jenkins-config.yml
     - include: docker-setup.yml
