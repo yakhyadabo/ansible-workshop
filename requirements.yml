@@ -5,10 +5,14 @@
 
 - src: geerlingguy.java
   version: "1.7.4"
+  #name: java
 
 - src: geerlingguy.jenkins
   version: "2.7.3"
+  #name: jenkins
 
 - src: geerlingguy.firewall
+  #name: firewall
 
 - src: geerlingguy.ansible
+  #name: ansible
