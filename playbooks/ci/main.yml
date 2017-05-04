@@ -30,13 +30,14 @@
       - workflow-aggregator
       - build-pipeline-plugin
       - ansicolor
-        #     - firewall_allowed_tcp_ports:
-        #       - "22" # SSH
-        #       - "8083" # Jenkins
-        #       - "5000" # Docker registry
+    - ldap_server: "192.168.1.1"
+    - ldap_port: "389"
+    - ldap_root_dn: "dc=example,dc=com"
+    - ldap_manager_dn: "cn=admin,dc=example,dc=com"
+    - ldap_manager_password: "toor"
+
   roles:
     - geerlingguy.ansible
-      #    - geerlingguy.firewall
     - geerlingguy.jenkins
 
   tasks:

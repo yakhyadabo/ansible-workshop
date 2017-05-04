@@ -9,16 +9,16 @@
     <denyAnonymousReadAccess>true</denyAnonymousReadAccess>
   </authorizationStrategy>
   <securityRealm class="hudson.security.LDAPSecurityRealm" plugin="ldap@1.15">
-    <server>192.168.1.1:389</server>
-    <rootDN>dc=example,dc=com</rootDN>
+    <server>{{ ldap_server }}:{{ ldap_port }}</server>
+    <rootDN>{{ ldap_root_dn }}</rootDN>
     <inhibitInferRootDN>false</inhibitInferRootDN>
     <userSearchBase></userSearchBase>
     <userSearch>uid={0}</userSearch>
     <groupMembershipStrategy class="jenkins.security.plugins.ldap.FromUserRecordLDAPGroupMembershipStrategy">
       <attributeName>memberOf</attributeName>
     </groupMembershipStrategy>
-    <managerDN>cn=admin,dc=example,dc=com</managerDN>
-    <managerPasswordSecret>toor</managerPasswordSecret>
+    <managerDN>{{ ldap_manager_dn }}</managerDN>
+    <managerPasswordSecret>{{ ldap_manager_password }}</managerPasswordSecret>
     <disableMailAddressResolver>false</disableMailAddressResolver>
     <displayNameAttributeName>displayname</displayNameAttributeName>
     <mailAddressAttributeName>mail</mailAddressAttributeName>
