@@ -1,3 +1,14 @@
 ---
 - name: Set /etc/ansible owner to user jenkins
   file: path=/etc/ansible owner=jenkins group=jenkins recurse=yes
+
+  # - name: check if jenkins config.xml file is there
+  #   stat:
+  #     path: /var/lib/jenkins/config.xml
+  #   register: config-xml_stat
+
+- name: template jenkins config.xml (if not already there ?)
+  template:
+    src: templates/config.xml.j2
+    dest: /var/lib/jenkins/config.xml
+  #when: config-xml_stat.exists == false
