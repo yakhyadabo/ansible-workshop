@@ -9,8 +9,6 @@
     - include: ../../include/docker-config.yml
 
 
-
-
 - name: Configure CI server
   hosts: ci-server
   become: yes
@@ -32,12 +30,13 @@
       - workflow-aggregator
       - build-pipeline-plugin
       - ansicolor
-    - firewall_allowed_tcp_ports:
-      - "22"
-      - "8083"
+        #     - firewall_allowed_tcp_ports:
+        #       - "22" # SSH
+        #       - "8083" # Jenkins
+        #       - "5000" # Docker registry
   roles:
     - geerlingguy.ansible
-    - geerlingguy.firewall
+      #    - geerlingguy.firewall
     - geerlingguy.jenkins
 
   tasks:
