@@ -1,0 +1,4 @@
+---
+# gather facts from monitoring nodes for iptables rules
+ - hosts: monitoring
+   tasks: []
