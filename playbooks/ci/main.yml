@@ -1,3 +1,4 @@
+---
 - name: Configure CI server
   hosts: ci-server
   become: yes
