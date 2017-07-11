@@ -3,7 +3,7 @@
   hosts: all
   become: yes
   roles:
-    - { role: geerlingguy.docker, tags: ["docker"] }
+    - { role: docker, tags: ["docker"] }
 
   tasks:
     - include: ../../include/docker-config.yml
@@ -37,8 +37,8 @@
     - ldap_manager_password: "toor"
 
   roles:
-    - geerlingguy.ansible
-    - geerlingguy.jenkins
+    - ansible
+    - jenkins
 
   tasks:
     - include: jenkins-config.yml
