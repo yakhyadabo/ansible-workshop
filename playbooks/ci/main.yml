@@ -1,14 +1,3 @@
----
-- name: Installing and configuring Docker 
-  hosts: all
-  become: yes
-  roles:
-    - { role: docker, tags: ["docker"] }
-
-  tasks:
-    - include: ../../include/docker-config.yml
-
-
 - name: Configure CI server
   hosts: ci-server
   become: yes
@@ -21,7 +10,7 @@
       - openjdk-8-jdk
     - jenkins_hostname: localhost
     - jenkins_http_port: 8083
-    - jenkins_version: "2.58"
+    - jenkins_version: "2.69"
     - jenkins_package_state: lastest
     - jenkins_plugins:
       - ldap

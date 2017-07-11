@@ -1,0 +1,9 @@
+---
+- name: Installing and configuring Docker 
+  hosts: all
+  become: yes
+  roles:
+    - { role: docker, tags: ["docker"] }
+
+  tasks:
+    - include: ../../include/docker-config.yml
