@@ -1,4 +1,32 @@
 ---
 # gather facts from monitoring nodes for iptables rules
- - hosts: monitoring
-   tasks: []
+- hosts: monitoring
+  tasks: []
+
+- hosts: ci-server
+  become: yes
+  serial: 1
+
+  pre_tasks:
+    - name: Ensure Jenkins is stopped.
+      service:
+        name: jenkins
+        state: stopped
+    
+        # - include: playbooks/ci/main.yml
+
+        # backup jobs
+
+  post_tasks:
+    - name: Ensure Jenkins is removed
+      apt:
+        name: jenkins
+        state: absent
+        purge: yes
+        force: yes
+
+    - name: Remove jenkins.deb 
+      file: 
+        path: "/tmp/jenkins.deb"
+        state: absent
+
