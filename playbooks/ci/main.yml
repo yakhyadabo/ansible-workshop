@@ -12,7 +12,7 @@
     - jenkins_hostname: localhost
     - jenkins_http_port: 8083
     - jenkins_version: "2.69"
-    - jenkins_package_state: lastest
+    - jenkins_package_state: latest
     - jenkins_plugins:
       - ldap
       - git
