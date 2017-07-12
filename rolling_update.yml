@@ -24,9 +24,3 @@
         state: absent
         purge: yes
         force: yes
-
-    - name: Remove jenkins.deb 
-      file: 
-        path: "/tmp/jenkins.deb"
-        state: absent
-
