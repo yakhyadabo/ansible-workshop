@@ -1,13 +1,14 @@
 ---
 - name: Configure CI server
   hosts: ci-server
-  become: yes
-  pre_tasks: 
-    - name: installing repo for Java 8 in Ubuntu
-      apt_repository: repo='ppa:openjdk-r/ppa'
   vars_files: 
     - vars/vars.yml
     - vars/vault.yml
+  become: yes
+
+  pre_tasks: 
+    - name: installing repo for Java 8 in Ubuntu
+      apt_repository: repo='ppa:openjdk-r/ppa'
 
   roles:
     - ansible

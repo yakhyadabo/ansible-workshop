@@ -2,18 +2,16 @@ java_packages: openjdk-8-jdk
 jenkins_hostname: localhost
 jenkins_http_port: 8083
 jenkins_version: "2.69"
-jenkins_package_state: latest
 
 jenkins_plugins:
   - ldap
   - git
   - job-dsl
-  - workflow-aggregator
-  - build-pipeline-plugin
+    #  - workflow-aggregator
+    #  - build-pipeline-plugin
   - ansicolor
 
 ldap_server: "192.168.1.1"
 ldap_port: "389"
 ldap_root_dn: "dc=example,dc=com"
 ldap_manager_dn: "cn=admin,dc=example,dc=com"
-ldap_manager_password: "toor"

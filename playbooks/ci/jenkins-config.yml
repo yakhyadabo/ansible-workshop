@@ -7,6 +7,7 @@
   #     path: /var/lib/jenkins/config.xml
   #   register: config-xml_stat
 
+# See : https://stackoverflow.com/questions/33891991/how-to-make-this-ansible-jenkins-script-idempotent-when-jenkins-is-rewriting-it
 - name: template jenkins config.xml (if not already there ?)
   template:
     src: templates/config.xml.j2
