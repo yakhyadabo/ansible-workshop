@@ -2,14 +2,23 @@
 - name: Set /etc/ansible owner to user jenkins
   file: path=/etc/ansible owner=jenkins group=jenkins recurse=yes
 
-  # - name: check if jenkins config.xml file is there
-  #   stat:
-  #     path: /var/lib/jenkins/config.xml
-  #   register: config-xml_stat
-
 # See : https://stackoverflow.com/questions/33891991/how-to-make-this-ansible-jenkins-script-idempotent-when-jenkins-is-rewriting-it
-- name: template jenkins config.xml (if not already there ?)
+- name: template jenkins config.xml.template
+  template:
+    src: templates/config.xml.j2
+    dest: /var/lib/jenkins/config.xml.template
+
+# We are expecting bindPassword to have changed so we can exclude this from the diff line count
+- name: diff jenkins config.xml and config.xml.template
+  shell: diff /var/lib/jenkins/config.xml.template /var/lib/jenkins/config.xml | grep -v managerPasswordSecret | wc -l
+  register: config_xml_diff
+
+# Diff will also output 2 extra lines that we don't care about. If there's more lines than this then we need to retemplate the config.xml
+- name: template jenkins config.xml
   template:
     src: templates/config.xml.j2
     dest: /var/lib/jenkins/config.xml
-  #when: config-xml_stat.exists == false
+  when: config_xml_diff.stdout != 2
+
+  # - name: Set /var/lib/jenkins owner to user jenkins
+  #   file: path=/var/lib/jenkins owner=jenkins group=jenkins recurse=yes
