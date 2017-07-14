@@ -11,7 +11,7 @@ playbook:
 	@ansible-playbook -i inventories/vagrant/inventory configure.yml --vault-password-file ~/.vault_pass.txt
  
 test: 
-	@ansible-playbook -i inventories/vagrant/inventory configure.yml --syntax-check --list-tasks
+	@ansible-playbook -i inventories/vagrant/inventory configure.yml --syntax-check --list-tasks --vault-password-file ~/.vault_pass.txt
 
 encrypt:
 	@ansible-vault encrypt playbooks/ci/vars/vault.yml --vault-password-file ~/.vault_pass.txt
