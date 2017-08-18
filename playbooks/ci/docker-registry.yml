@@ -1,9 +1,9 @@
 ---
 - name: Run Docker Registry
-  docker: 
+  docker_container:
     name: registry
     image: registry:2.6.1
-    state: running
+    state: started
     ports: "5000:5000"
 
     ## sudo docker run -d \

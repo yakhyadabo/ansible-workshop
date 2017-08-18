@@ -20,3 +20,13 @@
 - src: geerlingguy.ansible
   # version: "2.7.3"
   name: ansible
+
+# Installs the EPEL repository (Extra Packages for Enterprise Linux) for RHEL/CentOS.
+- src: geerlingguy.repo-epel
+  # version: xxxx
+  name: centos-epel-repo
+
+# We want ansible to run Docker containers : https://github.com/geerlingguy/ansible-role-pip
+- src: geerlingguy.pip
+  version: "1.0.0"
+  name: pip 

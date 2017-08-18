@@ -6,15 +6,19 @@
     - vars/vault.yml
   become: yes
 
-  pre_tasks: 
-    - name: installing repo for Java 8 in Ubuntu
-      apt_repository: repo='ppa:openjdk-r/ppa'
+  # pre_tasks: 
+  #   - name: installing repo for Java 8 in Ubuntu
+  #     apt_repository: repo='ppa:openjdk-r/ppa'
 
   roles:
+    # - java
+    - role: centos-epel-repo
+      when: "ansible_os_family == 'RedHat'"
     - ansible
     - jenkins
+    - pip
 
   tasks:
     - include: jenkins-config.yml
-    - include: docker-setup.yml
+      #- include: docker-setup.yml
     - include: docker-registry.yml
