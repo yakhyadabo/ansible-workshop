@@ -2,8 +2,13 @@
 - name: Installing and configuring Docker 
   hosts: all
   become: yes
+  vars_files: 
+    - vars/vars.yml
   roles:
     - { role: docker, tags: ["docker"] }
+    - role: centos-epel-repo
+      when: "ansible_os_family == 'RedHat'"
+    - pip
 
   tasks:
     - include: ../../include/docker-config.yml
