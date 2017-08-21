@@ -2,5 +2,9 @@
 node1.app.dev
 node2.app.dev
 
+[broker]
+node1.app.dev
+node2.app.dev
+
 [ci-server]
 ci.app.dev

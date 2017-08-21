@@ -1,0 +1,15 @@
+---
+- name: Configure Kafka
+  hosts: broker
+  become: yes
+
+  #roles:
+  #  # - java
+  #  - role: centos-epel-repo
+  #    when: "ansible_os_family == 'RedHat'"
+  #  - ansible
+  #  - jenkins
+  #  - pip
+
+  tasks:
+    - include: docker-kafka.yml
