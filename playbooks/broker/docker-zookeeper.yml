@@ -1,0 +1,7 @@
+---
+- name: Run Zookeeper
+  docker_container:
+    name: zookeeper
+    image: wurstmeister/zookeeper
+    state: started
+    ports: "9092:2181"
