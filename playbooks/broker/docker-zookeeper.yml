@@ -4,4 +4,4 @@
     name: zookeeper
     image: wurstmeister/zookeeper
     state: started
-    ports: "9092:2181"
+    ports: "2181:2181"
