@@ -1,5 +1,0 @@
-#######################################################
-### docker-py
-pip_install_packages: 
-  - name: docker
-    version: "2.5.0"
