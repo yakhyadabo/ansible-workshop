@@ -1,2 +1,14 @@
 ---
-- include: playbooks/broker/main.yml
+- name: Configure Zookeeper
+  hosts: zookeeper
+  become: yes
+  
+  roles:
+    - zookeeper
+
+- name: Configure Kafka
+  hosts: kafka
+  become: yes
+
+  roles:
+    - kafka
