@@ -14,4 +14,4 @@
     - pip
 
   tasks:
-    - include: include/docker-config.yml
+    - include: include/docker/docker-config.yml

@@ -1,2 +1,15 @@
 ---
-- include: playbooks/ci/main.yml
+- name: Configure CI server
+  hosts: ci-server
+  #  vars_files: 
+  #    - vars/vars.yml
+  #    - vars/vault.yml
+  become: yes
+
+  roles:
+    - ansible
+    - jenkins
+
+  tasks:
+    - include: include/ci/jenkins-config.yml
+    - include: include/ci/docker-registry.yml
