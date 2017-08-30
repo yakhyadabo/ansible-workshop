@@ -1,5 +1,5 @@
+- include: docker.yml
+- include: brokers.yml
+- include: ci.yml
 ---
-- include: playbooks/docker/main.yml
-- include: playbooks/broker/main.yml
-- include: playbooks/ci/main.yml
   # - include: playbooks/db/main.yml
