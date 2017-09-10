@@ -1,5 +1,5 @@
 ---
-- include: common.yml
-- include: brokers.yml
-- include: ci.yml
+- include: playbooks/common.yml
+- include: playbooks/brokers.yml
+- include: playbooks/ci.yml
   # - include: playbooks/db/main.yml
