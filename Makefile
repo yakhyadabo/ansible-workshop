@@ -11,7 +11,7 @@ site:
 	@ansible-playbook -i inventories/vagrant/inventory site.yml --vault-password-file ~/.vault_pass.txt
 
 broker: 
-	@ansible-playbook -i inventories/vagrant/inventory brokers.yml --vault-password-file ~/.vault_pass.txt
+	@ansible-playbook -i inventories/vagrant/inventory playbooks/brokers.yml --vault-password-file ~/.vault_pass.txt
  
 docker: 
 	@ansible-playbook -i inventories/vagrant/inventory docker.yml --vault-password-file ~/.vault_pass.txt
