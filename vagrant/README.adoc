@@ -1,0 +1,8 @@
+
+See: http://hakunin.com/six-ansible-practices
+
+
+This assumes you have vagrant installed. A very convenient vagrant plugin can automatically add and remove hosts every time you add or destroy VMs. Install as follows.
+
+https://github.com/cogitatio/vagrant-hostsupdater
+$ vagrant plugin install vagrant-hostsupdater
