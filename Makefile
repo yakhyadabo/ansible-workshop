@@ -1,5 +1,8 @@
 default: install
 
+infra: 
+	@vagrant up
+
 install: 
 	@ansible-galaxy install -r requirements.yml 
 
@@ -14,10 +17,10 @@ broker:
 	@ansible-playbook -i inventories/vagrant/inventory playbooks/brokers.yml --vault-password-file ~/.vault_pass.txt
  
 docker: 
-	@ansible-playbook -i inventories/vagrant/inventory docker.yml --vault-password-file ~/.vault_pass.txt
+	@ansible-playbook -i inventories/vagrant/inventory playbooks/docker.yml --vault-password-file ~/.vault_pass.txt
 	
 ci: 
-	@ansible-playbook -i inventories/vagrant/inventory ci.yml --vault-password-file ~/.vault_pass.txt
+	@ansible-playbook -i inventories/vagrant/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt
 	
 test: 
 	@ansible-playbook -i inventories/vagrant/inventory site.yml --syntax-check --list-tasks --vault-password-file ~/.vault_pass.txt
