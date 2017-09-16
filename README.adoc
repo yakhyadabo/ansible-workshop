@@ -3,3 +3,12 @@
 
 === Anssible Directory layout: 
 See : http://docs.ansible.com/ansible/playbooks_best_practices.html#directory-layout
+See: http://hakunin.com/six-ansible-practices
+
+See: http://hakunin.com/six-ansible-practices
+
+
+This assumes you have vagrant installed. A very convenient vagrant plugin can automatically add and remove hosts every time you add or destroy VMs. Install as follows.
+
+https://github.com/cogitatio/vagrant-hostsupdater
+$ vagrant plugin install vagrant-hostsupdater
