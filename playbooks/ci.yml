@@ -1,9 +1,9 @@
 ---
 - name: Configure CI server
   hosts: ci-server
-  #  vars_files: 
-  #    - vars/vars.yml
-  #    - vars/vault.yml
+  vars_files: 
+    - vars/vars.yml
+    - vars/vault.yml
   become: yes
 
   roles:
