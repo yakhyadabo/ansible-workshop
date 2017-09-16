@@ -16,7 +16,7 @@
 # Diff will also output 2 extra lines that we don't care about. If there's more lines than this then we need to retemplate the config.xml
 - name: template jenkins config.xml
   template:
-    src: templates/config.xml.j2
+    src: templates/ci/config.xml.j2
     dest: /var/lib/jenkins/config.xml
   when: config_xml_diff.stdout != 2
 
