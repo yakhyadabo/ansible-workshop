@@ -1,0 +1,14 @@
+---
+- name: Configure Splunk server
+  hosts: logging-server
+  become: yes
+  
+  roles:
+    - splunk-server
+
+- name: Configure Splunk forwarders
+  hosts: all
+  become: yes
+
+  roles:
+    - splunk-forwarder

@@ -16,12 +16,15 @@ site:
 broker: 
 	@ansible-playbook -i inventories/vagrant/inventory playbooks/brokers.yml --vault-password-file ~/.vault_pass.txt
  
-docker: 
-	@ansible-playbook -i inventories/vagrant/inventory playbooks/docker.yml --vault-password-file ~/.vault_pass.txt
+common: 
+	@ansible-playbook -i inventories/vagrant/inventory playbooks/common.yml --vault-password-file ~/.vault_pass.txt
 	
 ci: 
 	@ansible-playbook -i inventories/vagrant/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt
 	
+logging:
+	@ansible-playbook -i inventories/vagrant/inventory playbooks/logging.yml --vault-password-file ~/.vault_pass.txt
+
 test: 
 	@ansible-playbook -i inventories/vagrant/inventory site.yml --syntax-check --list-tasks --vault-password-file ~/.vault_pass.txt
 
