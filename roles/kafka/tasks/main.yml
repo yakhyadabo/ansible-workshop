@@ -1,18 +1,5 @@
 ---
-- name: run 1st kafka broker
-  docker_container:
-    name: kafka1
-    image: wurstmeister/kafka:0.10.2.0
-    state: started
-    ports: "9091:9092"
-    env:
-      KAFKA_ADVERTISED_HOST_NAME: "{{ inventory_hostname }}" 
-      KAFKA_ADVERTISED_PORT: "9091"
-      KAFKA_CREATE_TOPICS: "test_topic:2:3" # 2 partitions and 3 replicas
-      KAFKA_ZOOKEEPER_CONNECT: "192.168.1.10:2181" #use var for zookeeper host
-
-
-- name: run 2nd kafka broker
+- name: Run kafka broker
   docker_container:
     name: kafka2
     image: wurstmeister/kafka:0.10.2.0
