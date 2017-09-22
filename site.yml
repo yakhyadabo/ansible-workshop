@@ -2,4 +2,4 @@
 - include: playbooks/common.yml
 - include: playbooks/brokers.yml
 - include: playbooks/ci.yml
-  # - include: playbooks/db/main.yml
+- include: playbooks/logging.yml
