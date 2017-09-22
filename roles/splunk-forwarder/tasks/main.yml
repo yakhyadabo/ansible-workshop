@@ -2,7 +2,7 @@
 - name: Run Splunk forwarder
   docker_container:
     name: splunk-forwarder
-    image: splunk/universalforwarder:6.5.0
+    image: splunk/universalforwarder:6.6.3
     state: started
     ports: "5514:1514/udp"
     env:
