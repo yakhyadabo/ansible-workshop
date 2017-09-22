@@ -2,9 +2,13 @@
 - name: Run Splunk server
   docker_container:
     name: splunk-server
-    image: splunk/splunk:6.5.0
+    image: splunk/splunk:6.6.3
     state: started
-    ports: "8000:8000"
+    ports: 
+      - "8000:8000" 
+      - "1514:1514"
+      - "9997:9997"
+      - "8088:8088"
     env:
       SPLUNK_START_ARGS: --accept-license --answer-yes
       SPLUNK_ENABLE_LISTEN: 9997
