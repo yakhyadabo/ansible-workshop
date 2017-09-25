@@ -1,0 +1,17 @@
+---
+- name: Run UCD Relay
+  docker_container:
+    name: ucd-relay
+    image: ibmcom/ucdr
+    state: started
+    ports: 
+      - "7916:7916"
+      - "20080:20080"
+      - "20081:20081"
+     # etc_hosts:
+     #   ucd-server: "ci.app.dev"
+    env:
+      # PROXY_SERVERS: "0.0.0.0:7918" 
+      SERVER_URL: "https://ci.app.dev:8443"
+      RELAY_HOST: "0.0.0.0" 
+      AUTH_TOKEN: "nopass"
