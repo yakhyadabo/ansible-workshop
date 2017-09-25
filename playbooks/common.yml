@@ -8,10 +8,10 @@
       - name: docker
         version: "2.5.0"
   roles:
-    - { role: docker, tags: ["docker"] }
     - role: centos-epel-repo
       when: "ansible_os_family == 'RedHat'"
     - pip
+    - { role: docker, tags: ["docker"] }
 
   tasks:
     - include: include/docker/docker-config.yml
