@@ -1,0 +1,10 @@
+---
+- name: Run UCD Server
+  docker_container:
+    name: ucd-server
+    image: ibmcom/ucds
+    state: started
+    ports: 
+      - "8443:8443"
+      - "7918:7918"
+      - "8080:8080"
