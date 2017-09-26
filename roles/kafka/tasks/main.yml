@@ -1,12 +1,27 @@
 ---
-- name: Run kafka broker
+- name: Stop any running kafka container 
+  docker_container:
+    name: kafka
+    state: absent
+
+- name: Start new kafka container 
   docker_container:
     name: kafka
     image: wurstmeister/kafka:0.10.2.0
     state: started
     ports: "9092:9092"
     env:
-      KAFKA_ADVERTISED_HOST_NAME: "{{ inventory_hostname }}" 
+      KAFKA_ADVERTISED_HOST_NAME: "{{ inventory_hostname }}"
+      # KAFKA_ADVERTISED_HOST_NAME: "{{inventory_hostname}}" 
       KAFKA_ADVERTISED_PORT: "9092"
-      KAFKA_CREATE_TOPICS: "test_topic:2:3" # 2 partitions and 3 replicas
+      # KAFKA_CREATE_TOPICS: "test_topic:2:3" # 2 partitions and 3 replicas
       KAFKA_ZOOKEEPER_CONNECT: "192.168.1.10:2181" #use var for zookeeper host
+
+- debug:
+    msg: "inventory_hostname :  {{ inventory_hostname }}"
+
+- debug:
+    msg: "ansible_hostname :  {{ ansible_hostname }}"
+
+- debug:
+    msg: "ansible_fqdn :  {{ ansible_fqdn }}"
