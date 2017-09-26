@@ -1,5 +1,10 @@
 ---
-- name: Run UCD Relay
+- name: Stop any running ucd-relay container
+  docker_container:
+    name: ucd-relay
+    state: absent
+
+- name: Start ucd-relay
   docker_container:
     name: ucd-relay
     image: ibmcom/ucdr
