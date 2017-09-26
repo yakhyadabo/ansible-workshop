@@ -1,15 +1,9 @@
-[application]
-node0.app.dev
-node1.app.dev
-node2.app.dev
-
 [zookeeper]
 node0.app.dev
 
 [kafka]
 node1.app.dev
 node2.app.dev
-ci.app.dev
 
 
 [logging-server]
