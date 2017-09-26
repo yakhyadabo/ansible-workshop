@@ -1,5 +1,10 @@
 ---
-- name: Run UCD Server
+- name: Stop any running ucd-server container
+  docker_container:
+    name: ucd-agent
+    state: absent
+
+- name: Start ucd-server container
   docker_container:
     name: ucd-agent
     image: ibmcom/ucda
