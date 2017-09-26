@@ -1,5 +1,10 @@
 ---
-- name: Run Splunk server
+- name: Stop any running splunk-server container
+  docker_container:
+    name: splunk-server
+    state: absent
+
+- name: Start splunk-server container
   docker_container:
     name: splunk-server
     image: splunk/splunk:6.6.3
