@@ -1,5 +1,10 @@
 ---
-- name: Run Zookeeper
+- name: Stop any running zookeeper container
+  docker_container:
+    name: zookeeper
+    state: absent
+
+- name: Start zookeeper container
   docker_container:
     name: zookeeper
     image: wurstmeister/zookeeper
