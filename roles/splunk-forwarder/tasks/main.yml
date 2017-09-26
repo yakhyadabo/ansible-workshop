@@ -1,5 +1,10 @@
 ---
-- name: Run Splunk forwarder
+- name: Stop any running splunk-forwarder container
+  docker_container:
+    name: splunk-forwarder
+    state: absent
+
+- name: Start splunk-forwarder 
   docker_container:
     name: splunk-forwarder
     image: splunk/universalforwarder:6.6.3
