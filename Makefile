@@ -25,6 +25,9 @@ ci:
 logging:
 	@ansible-playbook -i inventories/vagrant/inventory playbooks/logging.yml --vault-password-file ~/.vault_pass.txt
 
+ucd: 
+	@ansible-playbook -i inventories/vagrant/inventory playbooks/ucd.yml --vault-password-file ~/.vault_pass.txt
+
 test: 
 	@ansible-playbook -i inventories/vagrant/inventory site.yml --syntax-check --list-tasks --vault-password-file ~/.vault_pass.txt
 
