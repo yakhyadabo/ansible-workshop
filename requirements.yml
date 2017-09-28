@@ -14,11 +14,11 @@
   name: jenkins
 
 - src: geerlingguy.firewall
-  # version: "2.7.3"
+  version: "2.3.0"
   name: firewall
 
 - src: geerlingguy.ansible
-  # version: "2.7.3"
+  version: "1.2.0"
   name: ansible
 
 # Installs the EPEL repository (Extra Packages for Enterprise Linux) for RHEL/CentOS.
