@@ -23,10 +23,10 @@ Vagrant.configure(2) do |config|
   # The 'ip route show' command can also be used to display the Ip to use (Ex 10.0.2.15)
   
   [ 
-    {:name => 'node0', :ip  => '192.168.1.10', :port0 => '8080', :port1 => '9080'},
-    {:name => 'node1', :ip  => '192.168.1.11', :port0 => '8081', :port1 => '9081'},
-    {:name => 'node2', :ip  => '192.168.1.12', :port0 => '8082', :port1 => '9082'},
-    {:name => 'ci',    :ip  => '192.168.1.13', :port0 => '8083', :port1 => '9083'}
+    {:name => 'node0', :ip  => '192.168.1.10'},
+    {:name => 'node1', :ip  => '192.168.1.11'},
+    {:name => 'node2', :ip  => '192.168.1.12'},
+    {:name => 'ci',    :ip  => '192.168.1.13'}
   ].each do |infos|
 
     config.vm.define infos[:name] do |host|
