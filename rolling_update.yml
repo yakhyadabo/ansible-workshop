@@ -19,8 +19,8 @@
 
   post_tasks:
     - name: Ensure Jenkins is removed
-      apt:
+      yum:
         pkg: jenkins
         state: absent
-        purge: yes
-        force: yes
+        # purge: yes
+        # force: yes
