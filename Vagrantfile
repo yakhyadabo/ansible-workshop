@@ -13,9 +13,9 @@ Vagrant.configure(2) do |config|
   # config.hostmanager.ignore_private_ip = false
   # config.hostmanager.include_offline = true
 
+  # Copy SSH public key
   authorize_key_for_root config, '~/.ssh/id_rsa.pub'
 
-  # Copy SSH public key
   # config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "/root/.ssh/authorized_keys"
   # config.vm.provision "file", source: "~/.ssh/id_rsa.pub", destination: "/home/vagrant/.ssh/authorized_keys"
 
