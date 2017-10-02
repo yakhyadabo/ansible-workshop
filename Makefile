@@ -6,10 +6,13 @@ infra:
 install: 
 	@ansible-galaxy install -r requirements.yml 
 
-jenkins-upgrade: 
+ci-upgrade: 
 	@ansible-playbook -i inventories/vagrant/inventory rolling_update.yml
-	@ansible-playbook -i inventories/vagrant/inventory ci.yml --vault-password-file ~/.vault_pass.txt
+	@ansible-playbook -i inventories/vagrant/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt
 
+ci: 
+	@ansible-playbook -i inventories/vagrant/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt
+	
 site:
 	@ansible-playbook -i inventories/vagrant/inventory site.yml --vault-password-file ~/.vault_pass.txt
 
@@ -18,9 +21,6 @@ broker:
  
 common: 
 	@ansible-playbook -i inventories/vagrant/inventory playbooks/common.yml --vault-password-file ~/.vault_pass.txt
-	
-ci: 
-	@ansible-playbook -i inventories/vagrant/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt
 	
 logging:
 	@ansible-playbook -i inventories/vagrant/inventory playbooks/logging.yml --vault-password-file ~/.vault_pass.txt
