@@ -13,14 +13,13 @@
         name: jenkins
         state: stopped
     
-        # - include: playbooks/ci/main.yml
-
-        # backup jobs
-
   post_tasks:
     - name: Ensure Jenkins is removed
       yum:
         pkg: jenkins
         state: absent
-        # purge: yes
-        # force: yes
+
+    - name: Remove /var/lib/jenkins
+      file:
+        state: absent
+        path: "/var/lib/jenkins/"
