@@ -3,9 +3,9 @@
   hosts: ci-server
   become: yes
   
-  vars_files: 
-    - vars/vars.yml
-    - vars/vault.yml
+  #  vars_files: 
+  #    - vars/vars.yml
+  #    - vars/vault.yml
 
   roles:
     - ansible

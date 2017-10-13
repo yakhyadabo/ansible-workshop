@@ -32,4 +32,4 @@ test:
 	@ansible-playbook -i inventories/vagrant/inventory site.yml --syntax-check --list-tasks --vault-password-file ~/.vault_pass.txt
 
 encrypt:
-	@ansible-vault encrypt playbooks/ci/vars/vault.yml --vault-password-file ~/.vault_pass.txt
+	@ansible-vault encrypt group_vars/ci-server/vault.yml --vault-password-file ~/.vault_pass.txt
