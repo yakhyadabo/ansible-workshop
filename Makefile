@@ -7,7 +7,7 @@ install:
 	@ansible-galaxy install -r requirements.yml 
 
 ci-upgrade: 
-	@ansible-playbook -i inventories/vagrant/inventory rolling_update.yml
+	@ansible-playbook -i inventories/vagrant/inventory rolling_update.yml --vault-password-file ~/.vault_pass.txt
 	@ansible-playbook -i inventories/vagrant/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt
 
 ci: 
