@@ -7,7 +7,7 @@ java_packages: java-1.8.0-openjdk
 ### JENKINS
 jenkins_hostname: ci.app.dev
 jenkins_http_port: 8083
-jenkins_version: "2.68"
+jenkins_version: "2.84"
 jenkins_plugins:
   - ldap
   - git
