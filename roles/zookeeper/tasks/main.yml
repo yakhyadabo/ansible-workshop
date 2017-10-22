@@ -7,6 +7,6 @@
 - name: Start zookeeper container
   docker_container:
     name: zookeeper
-    image: wurstmeister/zookeeper
+    image: wurstmeister/zookeeper:{{ zookeeper_version }}
     state: started
-    ports: "2181:2181"
+    ports: "2181:{{ zookeeper_port }}"
