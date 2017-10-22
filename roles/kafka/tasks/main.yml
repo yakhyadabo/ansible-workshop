@@ -7,12 +7,12 @@
 - name: Start new kafka container 
   docker_container:
     name: kafka
-    image: wurstmeister/kafka:0.10.2.0
+    image: wurstmeister/kafka:{{ kafka_version }}
     state: started
-    ports: "9092:9092"
+    ports: "9092:{{ kafka_port }}"
     env:
       KAFKA_ADVERTISED_HOST_NAME: "{{ ansible_eth1.ipv4.address }}"
       # KAFKA_ADVERTISED_HOST_NAME: "{{inventory_hostname}}" 
-      KAFKA_ADVERTISED_PORT: "9092"
+      KAFKA_ADVERTISED_PORT: "{{ kafka_port }}"
       # KAFKA_CREATE_TOPICS: "test_topic:2:3" # 2 partitions and 3 replicas
-      KAFKA_ZOOKEEPER_CONNECT: "192.168.1.10:2181" #use var for zookeeper host
+      KAFKA_ZOOKEEPER_CONNECT: "{{ zookeeper_host }}:{{ zookeeper_port }}"
