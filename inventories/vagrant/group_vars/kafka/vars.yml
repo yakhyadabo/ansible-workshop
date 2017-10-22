@@ -1,0 +1,5 @@
+### Kafka
+kafka_version: "0.10.2.0"
+kafka_port: 9092
+zookeeper_host: 192.168.1.10
+zookeeper_port: 2181
