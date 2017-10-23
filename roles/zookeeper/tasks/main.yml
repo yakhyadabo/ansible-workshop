@@ -9,4 +9,4 @@
     name: zookeeper
     image: wurstmeister/zookeeper:{{ zookeeper_version }}
     state: started
-    ports: "2181:{{ zookeeper_port }}"
+    ports: "{{ zookeeper_port }}:2181"
