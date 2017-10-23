@@ -9,7 +9,7 @@
     name: kafka
     image: wurstmeister/kafka:{{ kafka_version }}
     state: started
-    ports: "9092:{{ kafka_port }}"
+    ports: "{{ kafka_port }}:9092"
     env:
       KAFKA_ADVERTISED_HOST_NAME: "{{ ansible_eth1.ipv4.address }}"
       # KAFKA_ADVERTISED_HOST_NAME: "{{inventory_hostname}}" 
