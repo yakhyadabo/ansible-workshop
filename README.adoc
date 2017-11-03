@@ -19,7 +19,6 @@ The second change is the playbooks folder in the root folder of the project.
  
 .Inventories folder
 image::images/inventories.png[align=center]
-{nbsp} +
  
 *Roles folder* +
 On the root of the project we have roles folder for *internal roles*. +
