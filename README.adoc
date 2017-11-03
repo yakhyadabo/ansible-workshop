@@ -1,6 +1,38 @@
 = Ansible workshop 
 
-== The Vagrantfile*
+== *Targeted infrastructure*
+OS : Centos 7 +
+ 
+*ci.app.dev :* Jenkins, UCD server, Splunk Forwarder, UCD Agent +
+*node0.app.dev :* Zookeeper, Splunk server, Splunk Forwarder, UCD Relay, UCD Agent  +
+*node1.app.dev :* Kafka, Splunk Forwarder, UCD Agent +
+*node2.app.dev :* Kafka, Splunk Forwarder, UCD Agent +
+ 
+== *The project structure*
+A good directory structure will allow us to quickly retrieve information and to easily know where to make new changes. +
+The project structure is inspired from the http://docs.ansible.com/ansible/playbooks_best_practices.html#directory-layout[directory layout] proposed by Ansible. +
+ 
+*Inventories*
+The first change we make is to move *group_vars* into the inventory directory along with *host_vars* as a workaround of
+https://github.com/ansible/ansible/issues/16956[this regression] +
+The second change is the playbooks folder in the root folder of the project.
+ 
+.Inventories folder
+image::images/inventories.png[align=center]
+{nbsp} +
+ 
+*Roles folder* +
+On the root of the project we have roles folder for *internal roles*. +
+For the *external roles* (from Ansible Galaxy) the default folder is /etc/ansible/roles. This requires to give ansible root access.
+To avoid the need of using root we put external roles in the home path of the current user.
+[source, shell]
+.ansible.cfg
+----
+[defaults]
+roles_path = roles:~/.ansible/roles
+----
+
+== *The Vagrantfile*
 We want to be able to build locally, with Vagrant, something strongly close to DEV, TEST and Production environments. Each VM should behave like a real host. +
 In his article http://hakunin.com/six-ansible-practices[6 practices for super smooth Ansible experience] Maxim Chernyak shares some inspiring insights : +
 - Make it easy to sync your hosts file with your VMs +
