@@ -1,21 +1,15 @@
-== Ansible project template
-...
+= Ansible workshop 
 
-=== Anssible Directory layout: 
-See : http://docs.ansible.com/ansible/playbooks_best_practices.html#directory-layout
-See: http://hakunin.com/six-ansible-practices
-
-See: http://hakunin.com/six-ansible-practices
-
-
-This assumes you have vagrant installed. A very convenient vagrant plugin can automatically add and remove hosts every time you add or destroy VMs. Install as follows.
-
-https://github.com/cogitatio/vagrant-hostsupdater
+== The Vagrantfile*
+We want to be able to build locally, with Vagrant, something strongly close to DEV, TEST and Production environments. Each VM should behave like a real host. +
+In his article http://hakunin.com/six-ansible-practices[6 practices for super smooth Ansible experience] Maxim Chernyak shares some inspiring insights : +
+- Make it easy to sync your hosts file with your VMs +
+- Automate adding your pub key to VMs +
+- Configure your ssh client +
+ 
+After installing Vagrant, add *_vagrant-hostsupdater_* plugin to automatically add and remove hosts every time you add or destroy VMs.   +
+ 
 [source,shell]
 ----
 $ vagrant plugin install vagrant-hostsupdater
 ----
-
-=== Issues linked to Directory structure : https://github.com/ansible/ansible/issues/16956
-variables not being picked up from group_vars 
-
