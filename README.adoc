@@ -31,6 +31,59 @@ To avoid the need of using root we put external roles in the home path of the cu
 roles_path = roles:~/.ansible/roles
 ----
 
+== Ansible vault 
+
+We have some sensitive data, such as _vault_ldap_manager_password_ password in _playbooks/templates/ci/config.xml.j2_
+ 
+.config.xml.j2
+[source,xml]
+----
+...
+    <managerDN>{{ ldap_manager_dn }}</managerDN>
+    <managerPasswordSecret>{{ vault_ldap_manager_password }}</managerPasswordSecret>
+...
+----
+The variable vault_ldap_manager_password is set in inventories/vagrant/group_vars/ci-server/vault.yml and we don't want it to be shared on github in plain text.
+ 
+.vault.yml
+[source,shell]
+----
+vault_ldap_manager_password: toor
+----
+Ansible provide a feature, *ansible-vault*,  to encrypt/decrypt sensitive data.
+…
+ 
+*1.* Set, in a file (Ex ~/.vault_pass.txt), the password to use to encrypt/decrypt the sensitive data.
+ 
+.~/.vault_pass.txt
+[source,shell]
+----
+vault_password
+----
+ 
+*2.* Encrypt the password by running the following the command.
+…
+ 
+[source,shell]
+----
+ansible-vault encrypt inventories/vagrant/group_vars/ci-server/vault.yml --vault-password-file ~/.vault_pass.txt
+----
+The encrypted version of the vault file that will be shared on github.
+…
+ 
+.vault.yml
+[source,shell]
+----
+$ANSIBLE_VAULT;1.1;AES256
+65613936386634343663623462346539656165346437336330316161313761316365373133336463
+6361643237666666636635333830653365663932383536300a323039613438376233386130643630
+33363139663235303836373135313533646135636232373163306337633863393131633863636635
+3961363937303932650a613263383235656463376663383962616161366336653839323431623661
+34376337626631343132363563363131343539313239636163323433326136313434333561663861
+6438356263346230333137373031313363363131356362646537
+----
+See http://docs.ansible.com/ansible/latest/playbooks_best_practices.html#best-practices-for-variables-and-vaults[best practices for variables and vaults]
+
 == *The Vagrantfile*
 We want to be able to build locally, with Vagrant, something strongly close to DEV, TEST and Production environments. For that, it's necessary to treat each VM like a real host. +
 In his article http://hakunin.com/six-ansible-practices[6 practices for super smooth Ansible experience] Maxim Chernyak shares some inspiring insights : +
