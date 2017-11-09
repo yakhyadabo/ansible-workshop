@@ -31,6 +31,21 @@ To avoid the need of using root we put external roles in the home path of the cu
 roles_path = roles:~/.ansible/roles
 ----
 
+=== *Usage of containers and Roles*
+It's very challenging to keep code maintainable when using Configuration Management tools. We try to achieve this
+by focusing on minimizing the amount of code (*_less codes == less bugs_*). +
+
+All the components we use in the infrastructure (*Splunk*, *Kafka*, *Zookeeper*) run inside containers. +
+Container technologies such as Docker are powerful means of reducing the amount of code needed to manage services lifecycle (start, stop, resume, kill, ...). +
+Exception is made for *Jenkins*, the only component that runs directly on the VM, since it can be used to run container.
+The Docker team strongly advises against running a https://jpetazzo.github.io/2015/09/03/do-not-use-docker-in-docker-for-ci/[container in a container]. +
+
+On the other hand most of the roles we use may already exist on https://galaxy.ansible.com[Ansible Galaxy]. +
+{nbsp} +
+The key point here is to : +
+ - Prefer container in favor of "_non container_" +
+ - Try to use existing roles (from *Ansible Galaxy*) instead of writing new ones. +
+
 == Ansible vault 
 
 We have some sensitive data, such as _vault_ldap_manager_password_ password in _playbooks/templates/ci/config.xml.j2_
