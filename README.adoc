@@ -113,6 +113,12 @@ After installing Vagrant, add *_vagrant-hostsupdater_* plugin to automatically a
 $ vagrant plugin install vagrant-hostsupdater
 ----
 
+Add *vagrant-vbguest* plugin which will check and update the VirtualBox guest when VirtualBox is upgraded
+[source,shell]
+----
+$ vagrant plugin install vagrant-vbguest
+----
+
 The next step is to set up the VMS.
 [source,shell]
 ----
