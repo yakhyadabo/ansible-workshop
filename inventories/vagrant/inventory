@@ -9,11 +9,5 @@ node2.app.dev
 [logging-server]
 node0.app.dev
 
-[ucd-server-host]
-ci.app.dev
-
-[ucd-relay-host]
-node0.app.dev
-
 [ci-server]
 ci.app.dev
