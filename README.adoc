@@ -7,7 +7,34 @@ OS : Centos 7 +
 *node0.app.dev :* Zookeeper, Splunk server, Splunk Forwarder, UCD Relay, UCD Agent  +
 *node1.app.dev :* Kafka, Splunk Forwarder, UCD Agent +
 *node2.app.dev :* Kafka, Splunk Forwarder, UCD Agent +
- 
+
+== *The Vagrantfile*
+When working in a DevOps context, you should be able to build locally an infrastructure strongly close to your DEV, TEST and Production environments.
+For that, it's necessary to treat each Virtual Machine like a real host. +
+In his article http://hakunin.com/six-ansible-practices[6 practices for super smooth Ansible experience] Maxim Chernyak shares some inspiring insights : +
+- Make it easy to sync your hosts file with your VMs +
+- Automate adding your pub key to VMs +
+- Configure your ssh client +
+
+After installing Vagrant, add *_vagrant-hostsupdater_* plugin to automatically add and remove hosts every time you add or destroy VMs.   +
+
+[source,shell]
+----
+$ vagrant plugin install vagrant-hostsupdater
+----
+
+Add *vagrant-vbguest* plugin which will check and update the VirtualBox guest when VirtualBox is upgraded
+[source,shell]
+----
+$ vagrant plugin install vagrant-vbguest
+----
+
+The next step is to set up the VMS.
+[source,shell]
+----
+$ vagrant up
+----
+
 == *The project structure*
 A good directory structure will allow us to quickly retrieve information and to easily know where to make new changes. +
 The project structure is inspired from the http://docs.ansible.com/ansible/playbooks_best_practices.html#directory-layout[directory layout] proposed by Ansible. +
@@ -98,29 +125,3 @@ $ANSIBLE_VAULT;1.1;AES256
 6438356263346230333137373031313363363131356362646537
 ----
 See http://docs.ansible.com/ansible/latest/playbooks_best_practices.html#best-practices-for-variables-and-vaults[best practices for variables and vaults]
-
-== *The Vagrantfile*
-We want to be able to build locally, with Vagrant, something strongly close to DEV, TEST and Production environments. For that, it's necessary to treat each VM like a real host. +
-In his article http://hakunin.com/six-ansible-practices[6 practices for super smooth Ansible experience] Maxim Chernyak shares some inspiring insights : +
-- Make it easy to sync your hosts file with your VMs +
-- Automate adding your pub key to VMs +
-- Configure your ssh client +
- 
-After installing Vagrant, add *_vagrant-hostsupdater_* plugin to automatically add and remove hosts every time you add or destroy VMs.   +
- 
-[source,shell]
-----
-$ vagrant plugin install vagrant-hostsupdater
-----
-
-Add *vagrant-vbguest* plugin which will check and update the VirtualBox guest when VirtualBox is upgraded
-[source,shell]
-----
-$ vagrant plugin install vagrant-vbguest
-----
-
-The next step is to set up the VMS.
-[source,shell]
-----
-$ vagrant up
-----
