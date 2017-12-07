@@ -1,7 +1,11 @@
-default: install
+default: up
 
-infra: 
+up: 
 	@vagrant up
+
+dependencies:
+	@ vagrant plugin install vagrant-hostsupdater
+	@ vagrant plugin install vagrant-vbguest
 
 install: 
 	@ansible-galaxy install -r requirements.yml 
