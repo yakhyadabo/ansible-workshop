@@ -3,10 +3,10 @@
 == *Targeted infrastructure*
 OS : Centos 7 +
  
-*ci.app.dev :* Jenkins, UCD server, Splunk Forwarder, UCD Agent +
-*node0.app.dev :* Zookeeper, Splunk server, Splunk Forwarder, UCD Relay, UCD Agent  +
-*node1.app.dev :* Kafka, Splunk Forwarder, UCD Agent +
-*node2.app.dev :* Kafka, Splunk Forwarder, UCD Agent +
+*ci.app.dev :* Jenkins, UCD server, Splunk Forwarder +
+*node0.app.dev :* Zookeeper, Splunk server, Splunk Forwarder +
+*node1.app.dev :* Kafka, Splunk Forwarder +
+*node2.app.dev :* Kafka, Splunk Forwarder +
 
 == *The Vagrantfile*
 When working in a DevOps context, you should be able to build locally an infrastructure strongly close to your DEV, TEST and Production environments.
