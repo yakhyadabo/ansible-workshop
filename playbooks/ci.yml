@@ -4,6 +4,7 @@
   become: yes
   
   roles:
+    - centos-epel-repo
     - ansible
     - jenkins
 
