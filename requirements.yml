@@ -23,7 +23,7 @@
 
 # Installs the EPEL repository (Extra Packages for Enterprise Linux) for RHEL/CentOS.
 - src: geerlingguy.repo-epel
-  version: "1.2.2"
+  version: "1.2.3"
   name: centos-epel-repo
 
 # We want ansible to run Docker containers : https://github.com/geerlingguy/ansible-role-pip
