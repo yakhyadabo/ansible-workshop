@@ -15,7 +15,7 @@ ci-upgrade:
 	@ansible-playbook -i inventories/local/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt
 
 ci: 
-	@ansible-playbook -i inventories/local/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt
+	@ansible-playbook -i inventories/local/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt -u centos
 	
 site:
 	@ansible-playbook -i inventories/local/inventory site.yml --vault-password-file ~/.vault_pass.txt
