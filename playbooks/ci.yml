@@ -9,5 +9,5 @@
     - jenkins
 
   tasks:
-    - include: include/ci/jenkins-config.yml
+#    - include: include/ci/jenkins-config.yml
     - include: include/ci/docker-registry.yml
