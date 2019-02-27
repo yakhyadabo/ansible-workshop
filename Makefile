@@ -14,8 +14,8 @@ update:
 	@ansible-galaxy install -r requirements.yml --force
 
 ci-upgrade: 
-	@ansible-playbook -i inventories/local/inventory rolling_update.yml --vault-password-file ~/.vault_pass.txt
-	@ansible-playbook -i inventories/local/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt
+	@ansible-playbook -i inventories/local/inventory rolling_update.yml --vault-password-file ~/.vault_pass.txt -u centos
+	@ansible-playbook -i inventories/local/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt -u centos
 
 ci: 
 	@ansible-playbook -i inventories/local/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt -u centos
