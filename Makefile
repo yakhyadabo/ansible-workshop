@@ -8,7 +8,10 @@ dependencies:
 	@ vagrant plugin install vagrant-vbguest
 
 install: 
-	@ansible-galaxy install -r requirements.yml 
+	@ansible-galaxy install -r requirements.yml
+
+update: 
+	@ansible-galaxy install -r requirements.yml --force
 
 ci-upgrade: 
 	@ansible-playbook -i inventories/local/inventory rolling_update.yml --vault-password-file ~/.vault_pass.txt
