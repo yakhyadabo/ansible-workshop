@@ -30,3 +30,7 @@
 - src: geerlingguy.pip
   version: "1.0.0"
   name: pip 
+
+- src: geerlingguy.git 
+  version: "2.0.4"
+  name: git
