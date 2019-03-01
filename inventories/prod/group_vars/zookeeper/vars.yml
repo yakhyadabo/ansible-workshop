@@ -1,0 +1,3 @@
+### Zookeeper
+zookeeper_version: "latest"
+zookeeper_port: 2181 

@@ -1,0 +1,10 @@
+### Splunk Forwarder
+splunk_forwarder_version: "6.6.3"
+splunk_forwarder_http_port: 9088
+splunk_forwarder_service_port: 9089
+splunk_forwarder_network_input_port: 5514
+
+
+### Splunk server
+splunk_forwarder_server_host: 192.168.1.10
+splunk_forwarder_server_port: 9097

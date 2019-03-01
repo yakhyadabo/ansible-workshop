@@ -1,0 +1,5 @@
+### Splunk Server
+splunk_server_version: "6.6.3"
+splunk_server_web_port: 8000
+splunk_server_service_port: 8088
+splunk_server_network_input_port: 5514
