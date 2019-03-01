@@ -45,11 +45,11 @@ encrypt:
 ################################################################
 
 local-ci-upgrade: 
-	@ansible-playbook -i inventories/local/inventory rolling_update.yml --vault-password-file ~/.vault_pass.txt -u centos
-	@ansible-playbook -i inventories/local/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt -u centos
+	@ansible-playbook -i inventories/local/inventory rolling_update.yml --vault-password-file ~/.vault_pass.txt
+	@ansible-playbook -i inventories/local/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt
 
 local-ci: 
-	@ansible-playbook -i inventories/local/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt -u centos
+	@ansible-playbook -i inventories/local/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt
 	
 local-site:
 	@ansible-playbook -i inventories/local/inventory site.yml --vault-password-file ~/.vault_pass.txt
