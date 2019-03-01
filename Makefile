@@ -14,29 +14,60 @@ update:
 	@ansible-galaxy install -r requirements.yml --force
 
 ci-upgrade: 
+	@ansible-playbook -i inventories/prod/inventory rolling_update.yml --vault-password-file ~/.vault_pass.txt -u centos
+	@ansible-playbook -i inventories/prod/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt -u centos
+
+ci: 
+	@ansible-playbook -i inventories/prod/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt -u centos
+	
+site:
+	@ansible-playbook -i inventories/prod/inventory site.yml --vault-password-file ~/.vault_pass.txt
+
+broker: 
+	@ansible-playbook -i inventories/prod/inventory playbooks/brokers.yml 
+ 
+common: 
+	@ansible-playbook -i inventories/prod/inventory playbooks/common.yml 
+	
+logging:
+	@ansible-playbook -i inventories/prod/inventory playbooks/logging.yml 
+
+ucd: 
+	@ansible-playbook -i inventories/prod/inventory playbooks/ucd.yml 
+
+test: 
+	@ansible-playbook -i inventories/prod/inventory site.yml --syntax-check --list-tasks --vault-password-file ~/.vault_pass.txt
+
+encrypt:
+	@ansible-vault encrypt inventories/prod/group_vars/ci-server/vault.yml --vault-password-file ~/.vault_pass.txt
+
+################################################################
+################################################################
+
+local-ci-upgrade: 
 	@ansible-playbook -i inventories/local/inventory rolling_update.yml --vault-password-file ~/.vault_pass.txt -u centos
 	@ansible-playbook -i inventories/local/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt -u centos
 
-ci: 
+local-ci: 
 	@ansible-playbook -i inventories/local/inventory playbooks/ci.yml --vault-password-file ~/.vault_pass.txt -u centos
 	
-site:
+local-site:
 	@ansible-playbook -i inventories/local/inventory site.yml --vault-password-file ~/.vault_pass.txt
 
-broker: 
+local-broker: 
 	@ansible-playbook -i inventories/local/inventory playbooks/brokers.yml 
  
-common: 
+local-common: 
 	@ansible-playbook -i inventories/local/inventory playbooks/common.yml 
 	
-logging:
+local-logging:
 	@ansible-playbook -i inventories/local/inventory playbooks/logging.yml 
 
-ucd: 
+local-ucd: 
 	@ansible-playbook -i inventories/local/inventory playbooks/ucd.yml 
 
-test: 
+local-test: 
 	@ansible-playbook -i inventories/local/inventory site.yml --syntax-check --list-tasks --vault-password-file ~/.vault_pass.txt
 
-encrypt:
+local-encrypt:
 	@ansible-vault encrypt inventories/local/group_vars/ci-server/vault.yml --vault-password-file ~/.vault_pass.txt
